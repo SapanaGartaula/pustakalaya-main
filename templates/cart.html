@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+  <style>
+    @layer utilities {
+
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none; 
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+{% block body %}
+
+<body>
+  {% if cart_item %}
+  <h1 class="mb-10 text-center text-2xl font-bold">Cart Items</h1>
+  <div class="">
+    {% for book in cart_item %}
+    <div class="mx-auto max-w-5xl justify-content-start px-2 md:flex md:space-x-6 xl:px-0">
+      <div class="rounded-lg md:w-2/3">
+        <div class="justify-between rounded-lg bg-white p-4 shadow-md sm:flex sm:justify-start">
+          <img src="{{ book.book.Image.url }}" alt="product-image"
+            class="w-full rounded-lg sm:w-40  hover:scale-110 duration-300" />
+          <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+            <div class="mt-5 sm:mt-0">
+              <h2 class="text-lg font-bold text-gray-900">{{ book.book.book_name}}</h2>
+              <p class="mt-1 text-xs text-gray-700">Rs. {{book.book.price}}</p>
+            </div>
+            <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+              <div class="flex items-center border-gray-100">
+                <a href="{% url 'decrement_cart_item' book.book.id book.id %}"><span
+                  class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
+                  - </span>
+                </a>
+                <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="{{book.quantity}}"
+                  min="1" />
+                  <a href="{% url 'increment_cart_item' book.book.id book.id %}">
+                    <span
+                  class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
+                  + </span>
+                  </a>
+              </div>
+              <div class="flex items-center space-x-4">
+                <a href="{% url 'remove_cart' book.book.id book.id %}"><span title="Remove Book from Cart"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      </div>
+  
+  {% endfor %}
+  <div class="h-full  rounded-lg border float-right mr-12 bg-white p-6 shadow-md md:mt-0 md:w-[25%]">
+        <div class="mb-2 flex justify-between">
+            <p class="text-gray-700">Subtotal</p>
+            <p class="text-gray-700">Rs. {{total}}</p>
+          </div>
+          <div class="flex justify-between">
+            <p class="text-gray-700">Shipping</p>
+            <p class="text-gray-700">Rs. 100</p>
+          </div>
+          <hr class="my-4" />
+          <div class="flex justify-between">
+            <p class="text-lg font-bold">Total</p>
+            <div class="">
+              <p class="mb-1 text-lg font-bold">{{grand_total}}</p>
+            </div>
+          </div>
+          <a href="{% url 'checkout' %}"><button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check out</button></a>
+        </div>
+      </div>
+        
+  {% else %}
+      
+  <div class="bg-slate-200 ">
+  <p class="text-3xl font-bold mx-12 mb-3">Your Cart is Empty</p>
+  <img class="" src="{% static '/photos/emptycart.png' %}">
+  <a href={% url 'home' %}><button class="mt-6 w-46 ml-16 mb-5 rounded-md bg-green-500 py-1.5 text-xl font-bold text-black hover:bg-green-600 shadow-lg">Go Back To Shopping</button></a>
+  </div>
+
+  {% endif %}
+</body>
+
+</html>
+</div>
+</div>
+</div>
+</body>
+{% endblock body %}

@@ -1,0 +1,63 @@
+<div class="bg-black h-7">
+
+    <div class="">   <div class="text-white italic font-bold  sm:text-sm sm:mt-0.5 sm:ml-1 md:ml-12 lg:ml-16 2xl:ml-20 lg:text-[16px]">An impressive collection of books you will love under one roof</div></div>
+     
+       <div class="icons ">
+           <ul class=" float-right 2xl:mr-48  ">
+               <li>
+                 <img class="w-4  h-4 mr-2 mt-1.5 hover:bg-green-900 " src="/static/photos/facebook.svg" alt="">
+               </li>
+               <li>
+                 <img class="w-4  h-4 mr-2 mt-1.5 hover:bg-green-900 " src="/static/photos/twitter.svg" alt="">
+                 
+               </li>
+               <li>
+                 <img class="w-4  h-4 mr-2 mt-1.5 hover:bg-green-900 sm:mr-0 " src="/static/photos/youtube.svg" alt="">
+               </li>
+               
+             </ul>
+              </div>
+       </div>
+         
+       </div>
+       <div class="header ">
+         <div class="header-1 ">
+          <a href="{% url 'home' %}"><div class="logo justify-start">   <img class="" src="/static/photos/bookstorelogo.png" alt=""> </div></a>
+             <div class="btn-group">
+                 <button class="btn btn-secondary btn-lg dropdown-toggle text-black " type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <i class="fa-solid fa-bars "></i> Categories
+                 </button>
+                 <div class="dropdown-menu bg-slate-300 ">
+                     <a class="dropdown-item" href="#">Self-Help</a>
+                     <a class="dropdown-item" href="#">Horror</a>
+                     <a class="dropdown-item" href="#">Romance</a>
+                     <a class="dropdown-item" href="#">Children's</a>
+                     <a class="dropdown-item" href="#">History</a>
+                     <a class="dropdown-item" href="#">Health</a>
+       
+                 </div>
+               </div>
+               
+             <form method="get" action="{% url 'search' %}" class="search-form ">
+                 <input name="keyword" type="search" name="" placeholder="search by Title,Author or ISBN" id="search-box">
+                 <button type="submit"><label for="search-box" class="fas fa-search mt-1 "></label></button>
+             </form>
+             
+     
+             <div class="icons mt-1">
+                 <div id="search-btn" class="fas fa-search  "></div>
+                 
+                 <span title="Books you've Liked"><a href="#" class="fas fa-heart hover:scale-105 duration-300">
+                 </a></span>
+
+                 <a href="{% url 'cart' %}" class="fas fa-shopping-cart hover:scale-105 duration-300"></a>
+                 <a href="#"  class=" dark-mode fa-regular fas fa-moon hover:scale-105 duration-300"></a>
+
+                 <a href="{% url 'login' %}"> <span title="Login">
+                    <div class="fas fa-user hover:scale-105 duration-300 ml-1"></div> </span> </a>
+                 </div>
+             </div>
+         </div>
+         </div>
+       </div>
+       </div>

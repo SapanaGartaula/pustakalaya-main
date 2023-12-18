@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<body>
+    <div class=" mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 mx-5">
+        <div class="w-50 ml-5">
+            <div class="shadow-lg rounded-lg">
+                <a href="">
+                    <img src="{{ book.Image.url }}" class="rounded-tl-lg rounded-tr-lg hover:scale-110 duration-200"
+                        alt="Book Image" />
+                </a>
+            </div>
+            <b class="mt-5">Genres:</b>
+            <p>{{book.category}}</p>
+        </div>
+        <div class="">
+            <p class="font-bold text-3xl">{{book.book_name}}</p>
+            <p>{{book.author}}</p>
+            <p class="text-lg mt-3">Sold by Bibliomania Pustakalaya</p>
+            <hr class="border-gray-200 mt-3">
+            <p class="font-bold text-2xl mt-3">Synopsis</p>
+            <p class="mt-3">{{book.description}}</p>
+            <hr class="border-gray-200 mt-3">
+            <div class=" mt-3 grid grid-cols-4 gap-2">
+
+            </div>
+        </div>
+        <div class="w-75 h-50 bg-gray-100 border border-dark mt-22 ml-3">
+            <p class="mt-3 mx-12 font-bold text-xl ">Price</p>
+            <h4 class="mx-12 mt-2 font-weight-bold ">Rs. {{book.price}}</h4>
+            
+
+
+           
+            <form method="post" action="{% url 'add_to_cart' book.id %}">
+                {% csrf_token %}
+                <button type="submit"
+                class="border-2 font-bold border-dark w-full rounded-xl line bg-gradient-to-r from-red-600 to-pink-500 hover:from-pink-600 hover:to-pink-600 text-black-200 py-2 hover:scale-105 duration-300 mt-4">Add
+                to cart
+            </button> <br>
+            </form>
+        </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+</body>
+{% endblock body %}
